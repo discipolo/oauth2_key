@@ -1,0 +1,7 @@
+name: Oauth2 Key
+type: module
+description: helps storing oauth2 tokens using key module and retrieving them.
+core: 8.x
+package: Other
+dependencies:
+  - key

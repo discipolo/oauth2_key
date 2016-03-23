@@ -1,0 +1,8 @@
+oauth2_key.form:
+  path: '/oauth2-key-form/{client}'
+  defaults:
+    _title: 'Example form'
+    _form: '\Drupal\oauth2_key\Form\Oauth2FetchTokenForm'
+    client: 'default'
+  requirements:
+    _permission: 'access content'

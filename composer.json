@@ -1,0 +1,20 @@
+{
+  "name": "rosenstrauch/oauth2_key",
+  "require": {
+    "commerceguys/guzzle-oauth2-plugin": "dev-master"
+  },
+  "repositories": [
+    {
+      "type": "git",
+      "url": "https://github.com/lemasson-h/guzzle-oauth2-plugin"
+    }
+  ],
+  "minimum-stability": "dev",
+  "prefer-stable" : true,
+  "authors": [
+      {
+        "name": "rosenstrauch",
+        "email": "Rosenstrauch@2318810.no-reply.drupal.org"
+      }
+  ]
+}
