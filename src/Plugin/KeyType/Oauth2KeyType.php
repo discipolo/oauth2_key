@@ -10,6 +10,8 @@ namespace Drupal\oauth2_key\Plugin\KeyType;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\key\Plugin\KeyTypeBase;
 
+
+
 /**
  * Defines a generic key type for oauth2.
  *
@@ -46,6 +48,9 @@ class Oauth2KeyType extends KeyTypeBase {
    */
   public function validateKeyValue(array $form, FormStateInterface $form_state, $key_value) {
     // Validation of the key value is optional.
+    kint($form);
+    kint($form_state);
+    kint($key_value);
   }
 
 }
