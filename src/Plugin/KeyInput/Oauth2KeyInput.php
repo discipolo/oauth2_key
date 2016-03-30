@@ -66,20 +66,16 @@ class Oauth2KeyInput extends KeyInputBase {
 //      '#required' => TRUE,
 //    );
 
+//    $form['key_value']['refresh_token'] = array(
+//      '#type' => 'textfield',
+//      '#title' => $this->t('refresh_token'),
+//      '#required' => $form_state->getFormObject()->getEntity()->getKeyProvider()->getPluginDefinition()['key_value']['required'],
+//      '#default_value' => $key_value_data['current'],
+//      // Tell the browser not to autocomplete this field.
+//      '#attributes' => ['autocomplete' => 'off'],
+    //   );
+    // TODO: figure out if we need to create a new provider if we want to store multiple values in one key. for now we will treat the access token as the key value
     $form['key_value'] = array(
-      '#type' => 'fieldset',
-      '#title' => $this->t('Key value'),
-    );
-    $form['key_value']['refresh_token'] = array(
-      '#type' => 'textfield',
-      '#title' => $this->t('refresh_token'),
-      '#required' => $form_state->getFormObject()->getEntity()->getKeyProvider()->getPluginDefinition()['key_value']['required'],
-      '#default_value' => $key_value_data['current'],
-      // Tell the browser not to autocomplete this field.
-      '#attributes' => ['autocomplete' => 'off'],
-    );
-    // TODO: figure out if we need to create a new provider if we want to store multiple values in one key
-    $form['key_value']['access_token'] = array(
       '#type' => 'textfield',
       '#title' => $this->t('access_token'),
       '#required' => $form_state->getFormObject()->getEntity()->getKeyProvider()->getPluginDefinition()['key_value']['required'],
