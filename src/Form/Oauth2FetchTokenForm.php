@@ -118,6 +118,7 @@ class Oauth2FetchTokenForm extends FormBase {
 
     // now we can use the client here
     $key_entity = $client_plugin->createKeyEntity();
+    $key_entity_saved = $key_entity->save();
 
     drupal_set_message(t('You specified a title of %title.', ['%title' => $title]));
   }

@@ -76,16 +76,16 @@ class Oauth2KeyInput extends KeyInputBase {
     $form['key_value']['refresh_token'] = array(
       '#type' => 'textfield',
       '#title' => $this->t('refresh_token'),
-      '#required' => $form_state->getFormObject()->getEntity()->getKeyProvider()->getPluginDefinition()['refresh_token']['required'],
-      '#default_value' => $key_value_data['current']['refresh_token'],
+      '#required' => $form_state->getFormObject()->getEntity()->getKeyProvider()->getPluginDefinition()['key_value']['required'],
+      '#default_value' => $key_value_data['current'],
       // Tell the browser not to autocomplete this field.
       '#attributes' => ['autocomplete' => 'off'],
     );
     $form['key_value']['access_token'] = array(
       '#type' => 'textfield',
       '#title' => $this->t('access_token'),
-      '#required' => $form_state->getFormObject()->getEntity()->getKeyProvider()->getPluginDefinition()['access_token']['required'],
-      '#default_value' => $key_value_data['current']['access_token'],
+      '#required' => $form_state->getFormObject()->getEntity()->getKeyProvider()->getPluginDefinition()['key_value']['required'],
+      '#default_value' => $key_value_data['current'],
       // Tell the browser not to autocomplete this field.
       '#attributes' => ['autocomplete' => 'off'],
     );
@@ -111,7 +111,7 @@ class Oauth2KeyInput extends KeyInputBase {
    * {@inheritdoc}
    */
 //  public function processSubmittedKeyValue(FormStateInterface $form_state) {
-//    // it seems wrong to do this in form submission
+//    // NOTE: it seems wrong to do this in form submission
 //
 //
 //
