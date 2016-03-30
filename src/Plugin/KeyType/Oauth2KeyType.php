@@ -48,8 +48,7 @@ class Oauth2KeyType extends KeyTypeBase {
    */
   public function validateKeyValue(array $form, FormStateInterface $form_state, $key_value) {
     // Validation of the key value is optional.
-    kint($form);
-    kint($form_state);
+
     kint($key_value);
   }
 

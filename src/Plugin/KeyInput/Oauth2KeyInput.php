@@ -48,8 +48,8 @@ class Oauth2KeyInput extends KeyInputBase {
    */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
     $key_value_data = $form_state->get('key_value');
-    // we dont want to necessarily store these as part of the key
-    // TODO: doesnt seem right to add the authorization client to the input directly
+    // NOTE: we dont want to necessarily store grant information as part of the key, so it doesnt seem right to put them into the input directly
+
 //    $form['consumer_key'] = array(
 //      '#type' => 'textfield',
 //      '#title' => t('Consumer key'),
@@ -65,13 +65,10 @@ class Oauth2KeyInput extends KeyInputBase {
 //      '#default_value' => $this->getConsumerSecret(),
 //      '#required' => TRUE,
 //    );
+
     $form['key_value'] = array(
       '#type' => 'fieldset',
       '#title' => $this->t('Key value'),
-//      '#required' => $form_state->getFormObject()->getEntity()->getKeyProvider()->getPluginDefinition()['key_value']['required'],
-//      '#default_value' => $key_value_data['current'],
-//      // Tell the browser not to autocomplete this field.
-//      '#attributes' => ['autocomplete' => 'off'],
     );
     $form['key_value']['refresh_token'] = array(
       '#type' => 'textfield',
@@ -81,6 +78,7 @@ class Oauth2KeyInput extends KeyInputBase {
       // Tell the browser not to autocomplete this field.
       '#attributes' => ['autocomplete' => 'off'],
     );
+    // TODO: figure out if we need to create a new provider if we want to store multiple values in one key
     $form['key_value']['access_token'] = array(
       '#type' => 'textfield',
       '#title' => $this->t('access_token'),
@@ -106,19 +104,11 @@ class Oauth2KeyInput extends KeyInputBase {
   }
 
 
-
+// NOTE: fetching in process submitted key function works but doesnt seem right either. thanks to https://www.drupal.org/node/2693145 this is now easier
   /**
    * {@inheritdoc}
    */
 //  public function processSubmittedKeyValue(FormStateInterface $form_state) {
-//    // NOTE: it seems wrong to do this in form submission
-//
-//
-//
-//    // TODO: check if we need to generate a new access token using either client credentials grant or password grant.
-//
-//
-//
 //
 //    $processed_values = array(
 //      'submitted' => NULL,
@@ -128,48 +118,28 @@ class Oauth2KeyInput extends KeyInputBase {
 //    $key_value_data = $form_state->get('key_value');
 //    $key_helper_data = $form_state->get('helper');
 //
-//
-//
-//    kint($key_helper_data);
-//
-//// TODO Deal with key create_key is checked
 //    if (isset($key_input_settings['create_key'])) {
 //
 //      $consumer_secret = $key_input_settings['helper']['consumer_secret'];
 //      $consumer_id = $key_input_settings['helper']['consumer_id'];
 //      $token_endpoint = $key_input_settings['helper']['token_endpoint'];
 //      $baseurl = $key_input_settings['helper']['baseurl'];
-////      $consumer_id = $form_state->get('helper', 'consumer_id');
-//
-//      kint($consumer_id);
-//      kint($consumer_secret);
-//
-//      kint($key_input_settings['helper']['consumer_id']);
 //
 //      $config = [
 //        // ClientCredentials::USERNAME => 'test@example.com',
 //        ClientCredentials::CONFIG_CLIENT_ID => $consumer_id,
 //        ClientCredentials::CONFIG_CLIENT_SECRET => $consumer_secret,
-//        // todo get from connection entity?/make configurable
 //        ClientCredentials::CONFIG_TOKEN_URL => $token_endpoint,
 //        'scope' => 'administration',
 //      ];
 //
-//
 //      $access_token = $this->getTokens($baseurl, $config);
 //      $key_input_settings['key_value'] = $access_token;
-//      kint($key_input_settings['key_value']);
 //    }
-//
-//
-//
-//
 //
 //    // Deal with key value is filled
 //    if (isset($key_input_settings['key_value'])) {
-//
-//
-//
+
 //      // If the submitted key value is equal to the obscured value.
 //      if ($key_input_settings['key_value'] == $key_value_data['obscured']) {
 //        // Use the processed original value as the submitted value.
